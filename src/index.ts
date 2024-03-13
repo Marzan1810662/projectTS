@@ -16,27 +16,24 @@
 // // console.log(mahir.city);
 
 class User {
-    private _courseCount: number = 1 //private variables are only accessible inside the class
+    // private _courseCount: number = 1 //private variables are only accessible inside the class not in the inheritent class
+    protected _courseCount: number = 1 //protected variables are  accessible inside the class and all the classes that inherits the class
     readonly id: number = 1234
     constructor(
         public email: string,
         public name: string,
         private userId: string) {
     }
-
-    private deleteToken(){
+    private deleteToken() {
         console.log(`token deleted`);
     }
-
     // getter method
     get getAppleEmailobject(): string {
         return `apple ${this.email}`
     }
-
     get courseCount(): number {
         return this._courseCount
     }
-
     // setter method
     // setter method can not return anything so it will not have any return type
     set courseCount(courseNumber) {
@@ -44,15 +41,16 @@ class User {
             throw new Error('Course count should be more than 1')
         }
         this._courseCount = courseNumber
-    
+
     }
 }
 
 //inheritance
-class SubUser extends User{
-    isFamily : boolean = true
-
-
+class SubUser extends User {
+    isFamily: boolean = true
+    changeCourseCount() {
+        this._courseCount = 4
+    }
 }
 
 const mahir = new User('m@m.com', 'mahir', '123')

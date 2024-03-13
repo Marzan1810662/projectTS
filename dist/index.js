@@ -19,7 +19,8 @@ class User {
         this.email = email;
         this.name = name;
         this.userId = userId;
-        this._courseCount = 1; //private variables are only accessible inside the class
+        // private _courseCount: number = 1 //private variables are only accessible inside the class not in the inheritent class
+        this._courseCount = 1; //protected variables are  accessible inside the class and all the classes that inherits the class
         this.id = 1234;
     }
     deleteToken() {
@@ -46,6 +47,9 @@ class SubUser extends User {
     constructor() {
         super(...arguments);
         this.isFamily = true;
+    }
+    changeCourseCount() {
+        this._courseCount = 4;
     }
 }
 const mahir = new User('m@m.com', 'mahir', '123');
